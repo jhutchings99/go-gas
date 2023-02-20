@@ -11,7 +11,7 @@ import { themeSettings } from "./theme";
 function App() {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-  const isAuth = Boolean(useSelector((state) => state.user.token));
+  // const isAuth = Boolean(useSelector((state) => state.user.token));
 
   return (
     <div className="app">
@@ -20,8 +20,8 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/home" element={isAuth ? <HomePage /> : <Navigate to="/" />} />
-            <Route path="/station/:stationId" element={isAuth ? <StationPage /> : <Navigate to="/" />} />
+            <Route path="/home" element={true ? <HomePage /> : <Navigate to="/" />} />
+            <Route path="/station/:stationId" element={true ? <StationPage /> : <Navigate to="/" />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

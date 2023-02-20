@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 /* CREATE */
 export const createStation = async (req, res) => {
     try {
-        const { name, address } = req.body;
+        const { name, address, lat, lng } = req.body;
         const newStation = new Station({
             name,
             address,
-            prices: {},
-            reviews: {},
+            lat,
+            lng
         });
         await newStation.save();
 
@@ -48,7 +48,7 @@ export const getStation = async (req, res) => {
 export const createReview = async (req, res) => {
     try {
         const { stationId, userId } = req.params;
-        const { review } = req.body;
+        const { review, rating } = req.body;
 
         const staion = await Station.findById(stationId);
         const stationReviews = staion.reviews;
@@ -57,6 +57,7 @@ export const createReview = async (req, res) => {
             reviewId: uuidv4(),
             userId: userId,
             review: review,
+            rating: rating,
             time: new Date(),
         }
 
@@ -73,5 +74,29 @@ export const createReview = async (req, res) => {
         res.status(200).json(updatedStation);
     } catch (err) {
         res.status(404).json({ message: err.message });
+    }
+}
+
+export const createPrice = async (req, res) => {
+    try {
+        const { stationId, userId } = req.params;
+        const { price } = req.body;
+
+        const newPrice = {
+            price,
+            userId,
+            time: new Date(),
+        }
+
+        const station = await Station.findById(stationId);
+
+        if (station) {
+            station.prices.push(newPrice);
+            await station.save();
+        }
+
+        res.status(201).json(station);
+    } catch (err) {
+        res.status(409).json({ message: err.message });
     }
 }

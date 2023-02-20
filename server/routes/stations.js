@@ -1,5 +1,5 @@
 import express from "express";
-import { getStation, getStations, createStation, createReview } from "../controllers/stations.js";
+import { getStation, getStations, createStation, createReview, createPrice } from "../controllers/stations.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
@@ -12,6 +12,6 @@ router.get("/:stationId", getStation);
 router.post("/", createStation);
 
 /* UPDATE */
-router.patch("/:stationId/reviews/:userId", verifyToken, createReview);
-
+router.patch("/:stationId/reviews/:userId", createReview);
+router.patch("/:stationId/prices/:userId", createPrice);
 export default router;

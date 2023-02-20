@@ -10,8 +10,13 @@ const StationSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        lat_lng: {
+        lat: {
             type: Number,
+            required: true
+        },
+        lng: {
+            type: Number,
+            required: true
         },
         prices: {
             type: [],

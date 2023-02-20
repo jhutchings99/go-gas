@@ -106,7 +106,6 @@ const Form = () => {
                 handleChange,
                 handleBlur,
                 handleSubmit,
-                setFieldValue,
                 resetForm,
             }) => (
                 <form onSubmit={handleSubmit}>
