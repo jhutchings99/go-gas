@@ -8,7 +8,7 @@ Go Gas is a web application where users can post the current price of gas at a s
 
 ## Demo
 
-Insert gif or link to demo
+![](https://github.com/jhutchings99/go-gas/blob/main/go-gas-demo.gif)
 
 
 ## Installation
