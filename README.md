@@ -16,7 +16,7 @@ Go Gas is a web application where users can post the current price of gas at a s
 Install go-gas with npm
 
 ```bash
-https://github.com/jhutchings99/go-gas.git
+git clone https://github.com/jhutchings99/go-gas.git
 
 cd go-gas
 
