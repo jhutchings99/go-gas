@@ -3,13 +3,12 @@ import {
     Button,
     TextField,
     useMediaQuery,
-    Typography,
     useTheme,
 } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 const URL = "http://localhost:3001";
@@ -39,10 +38,12 @@ const PriceForm = () => {
             },
             body: JSON.stringify(values),
         });
-        const savedPrice = await priceResponse.json();
+        priceResponse.json();
         onSubmitProps.resetForm();
-        // navigate(`/home`);
-        // navigate`/station/${stationId}`
+        navigate(`/home`);
+        setTimeout(() => {
+            navigate(`/station/${stationId}`);
+        }, 1);
     }
 
     const handleFormSubmit = (values, onSubmitProps) => {

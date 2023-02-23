@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Divider, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 import Navbar from "scenes/navbar";
@@ -16,6 +16,8 @@ const StationPage = () => {
 
     const currentStation = stations.find((station) => station._id === stationId);
 
+    const isNonMobile = useMediaQuery("(min-width: 1000px)");
+
     const { palette } = useTheme();
     const main = palette.primary.main
     const mainBackground = palette.neutral.light
@@ -29,8 +31,6 @@ const StationPage = () => {
         }
         return allPrices;
     }
-
-    console.log(getAllPrices())
 
     const currentPrice = () => {
         if (currentStation.prices.length === 0) return parseFloat(0).toFixed(2);
@@ -57,8 +57,6 @@ const StationPage = () => {
         }
         return stars;
     };
-
-    const url = "http://localhost:3001";
 
     return (
         <>

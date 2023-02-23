@@ -39,7 +39,7 @@ const Map = () => {
         )
     } else {
         return (
-            <GoogleMap zoom={12} center={center} mapContainerClassName="map-container">
+            <GoogleMap zoom={12} center={center} mapContainerClassName={`${isNonMobileScreens ? "homemap-desktop" : "homemap-mobile"}`}>
                 {stations.map((station) => (
                     <MarkerF
                         key={station._id}
