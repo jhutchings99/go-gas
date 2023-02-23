@@ -29,7 +29,6 @@ const StationWidget = ({
         return parseFloat(prices[prices.length - 1].price).toFixed(2);
     };
 
-    // calculate average review and display it as a star rating
     const averageReview = () => {
         if (reviews.length === 0) return 0;
         let total = 0;
@@ -39,8 +38,6 @@ const StationWidget = ({
         return parseFloat(total / reviews.length);
     };
 
-
-    // create a function that takes in a number and draw that many filled stars and the rest empty
     const drawStars = (rating) => {
         const stars = [];
         for (let i = 0; i < 5; i++) {

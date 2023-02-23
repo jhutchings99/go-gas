@@ -5,9 +5,9 @@ import { verifyToken } from "../middleware/auth.js";
 const router = express.Router();
 
 /* READ */
-router.get("/:id", verifyToken, getUser);
+router.get("/:id", getUser);
 
 /* UPDATE */
-router.patch("/:id/favorites/:stationId", verifyToken, addRemoveFavorite);
+router.patch("/:id/favorites/:stationId", addRemoveFavorite);
 
 export default router;

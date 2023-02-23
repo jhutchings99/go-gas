@@ -1,4 +1,5 @@
 import Station from "../models/Station.js";
+import User from "../models/User.js";
 import { v4 as uuidv4 } from 'uuid';
 
 /* CREATE */
@@ -52,10 +53,11 @@ export const createReview = async (req, res) => {
 
         const staion = await Station.findById(stationId);
         const stationReviews = staion.reviews;
+        const user = await User.findById(userId);
 
         const newReview = {
             reviewId: uuidv4(),
-            userId: userId,
+            user: user,
             review: review,
             rating: rating,
             time: new Date(),

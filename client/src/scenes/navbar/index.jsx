@@ -52,7 +52,7 @@ const Navbar = () => {
                         cursor: "pointer",
                     },
                 }}>
-                Fuel Friends
+                Go Gas
             </Typography>
             {isNonMobileScreens && (
                 <FlexBetween
@@ -99,7 +99,7 @@ const Navbar = () => {
                         <MenuItem value={username}>
                             <Typography>{username}</Typography>
                         </MenuItem>
-                        <MenuItem onClick={() => dispatch(setLogout())}>Log Out</MenuItem>
+                        <MenuItem onClick={() => {dispatch(setLogout()); navigate("/")}}>Log Out</MenuItem>
                     </Select>
                 </FormControl>
             </FlexBetween>

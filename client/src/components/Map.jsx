@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
+import { useMediaQuery } from "@mui/material";
 
 const Map = () => {
     const center = useMemo(() => ({ lat: 37.095169, lng: -113.575974 }), []);
@@ -8,11 +9,9 @@ const Map = () => {
     let currentStationLat;
     let currentStationLng;
 
-
-    // if on home page mark all stations on map else mark only current station
+    const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
     const stationId = window.location.pathname.split("/")[2];
-
     const currentStation = stations.find((station) => station._id === stationId);
 
     if (stationId) {
@@ -29,7 +28,7 @@ const Map = () => {
 
     if (stationId) {
         return (
-            <GoogleMap zoom={19} center={{ lat: currentStationLat, lng: currentStationLng }} mapContainerClassName="map-container">
+            <GoogleMap zoom={19} center={{ lat: currentStationLat, lng: currentStationLng }} mapContainerClassName={`${isNonMobileScreens ? "station-desktop" : "station-mobile"}`}>
                 {stations.map((station) => (
                     <MarkerF
                         key={station._id}
