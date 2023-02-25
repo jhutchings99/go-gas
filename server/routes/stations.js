@@ -5,13 +5,13 @@ import { verifyToken } from "../middleware/auth.js";
 const router = express.Router();
 
 /* READ */
-router.get("/", getStations)
-router.get("/:stationId", getStation);
+router.get("/", verifyToken, getStations)
+router.get("/:stationId", verifyToken, getStation);
 
 /* POST */
-router.post("/", createStation);
+router.post("/", verifyToken, createStation);
 
 /* UPDATE */
-router.patch("/:stationId/reviews/:userId", createReview);
-router.patch("/:stationId/prices/:userId", createPrice);
+router.patch("/:stationId/reviews/:userId", verifyToken, createReview);
+router.patch("/:stationId/prices/:userId", verifyToken, createPrice);
 export default router;
